@@ -21,7 +21,7 @@ def delete_movie(self):
         if temp.title.lower() == title.lower():
 
             # CONFIRMATION
-            confirm = input(f"Do you really want to delete '{temp.title}'? (yes/no): ").lower()
+            confirm = input("Delete this movie? (yes/no): ").lower()
 
             if confirm != "yes":
                 print("Delete cancelled.")
