@@ -15,6 +15,6 @@ class MovieNode:
         self.genre = genre
         self.release_year = release_year
 
-        # POINTERS FOR CIRCULAR DOUBLY LINKED LIST
+        # POINTERS FOR DOUBLY LINKED LIST
         self.next = None
         self.prev = None
