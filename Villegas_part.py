@@ -4,12 +4,14 @@
 # ==============================
 
 # DELETE MOVIE
-def delete_movie(self, title):
+def delete_movie(self):
 
     # CHECK IF PLAYLIST IS EMPTY
     if self.head is None:
         print("Playlist is empty.")
         return
+
+    title = input("Enter movie title to delete: ")
 
     temp = self.head
 
@@ -18,10 +20,16 @@ def delete_movie(self, title):
         # IF MOVIE IS FOUND
         if temp.title.lower() == title.lower():
 
+            # CONFIRMATION
+            confirm = input(f"Do you really want to delete '{temp.title}'? (yes/no): ").lower()
+
+            if confirm != "yes":
+                print("Delete cancelled.")
+                return
+
             # IF ONLY ONE MOVIE
             if temp.next == self.head and temp.prev == self.head:
                 self.head = None
-                self.tail = None
                 self.current = None
 
             else:
@@ -31,10 +39,6 @@ def delete_movie(self, title):
                 # IF DELETING THE HEAD
                 if temp == self.head:
                     self.head = temp.next
-
-                # IF DELETING THE TAIL
-                if temp == self.tail:
-                    self.tail = temp.prev
 
                 # UPDATE CURRENT POINTER
                 if temp == self.current:
@@ -50,15 +54,17 @@ def delete_movie(self, title):
             break
 
     print("Movie not found.")
-
-
+    
+    
 # UPDATE MOVIE
-def update_movie(self, title):
-
+def update_movie(self):
+    
     # CHECK IF PLAYLIST IS EMPTY
     if self.head is None:
         print("Playlist is empty.")
         return
+
+    title = input("Enter movie title to update: ")
 
     temp = self.head
 
@@ -69,14 +75,24 @@ def update_movie(self, title):
 
             print("\nEnter new movie details")
 
-            temp.movie_id = input("New movie ID: ")
             temp.title = input("New title: ")
             temp.actor = input("New actor: ")
-            temp.screen_time = input("New screen time: ")
-            temp.rating = input("New popularity rating: ")
+            temp.time = input("New screen time: ")
             temp.director = input("New director: ")
             temp.genre = input("New genre: ")
-            temp.release_year = input("New release year: ")
+            temp.year = input("New release year: ")
+            
+            # VALIDATED RATING INPUT (1.0 - 10.0)
+            while True:
+                try:
+                    rating = float(input("New popularity rating (1.0 - 10.0): "))
+                    if 1.0 <= rating <= 10.0:
+                        temp.rating = rating
+                        break
+                    else:
+                        print("Rating must be between 1.0 and 10.0 only.")
+                except ValueError:
+                    print("Invalid input. Please enter a number (example: 8, 6.7, 9.75).")
 
             print("Movie updated successfully!")
             return
