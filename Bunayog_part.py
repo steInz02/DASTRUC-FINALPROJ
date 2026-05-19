@@ -36,26 +36,7 @@ class MoviePlaylist:
             return True
         else:
             return False
-
-    # CHECK DUPLICATE TITLE
-    def is_duplicate(self, title):
-
-        if self.head is None:
-            return False
-
-        temp = self.head
-
-        while True:
-
-            if temp.title.lower() == title.lower():
-                return True
-
-            temp = temp.next
-
-            if temp == self.head:
-                break
-
-        return False
+            
 
     # COUNT ALL MOVIES
     def count_movies(self):
