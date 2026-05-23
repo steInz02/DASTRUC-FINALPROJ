@@ -44,6 +44,8 @@ def add_beginning(self, new_movie):
     print("Movie added successfully.")
 
 # ADD MOVIE AT END
+
+
 def add_end(self, new_movie):
 
     # CHECK DUPLICATE
@@ -89,6 +91,8 @@ def add_end(self, new_movie):
     print("Movie added successfully.")
 
 # ADD MOVIE AT POSITION
+
+
 def add_position(self, new_movie, position):
 
     # INVALID POSITION
