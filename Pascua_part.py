@@ -5,71 +5,68 @@
 
 from Staines_part import print_movie
 
-# SEARCH BY TITLE FUNCTION
 
+# SEARCH BY TITLE FUNCTION
 def search_by_title(self, title):
 
-```
-# CHECK IF PLAYLIST IS EMPTY
-if self.head is None:
-    print("Playlist is empty.")
-    return
-
-current = self.head
-
-while True:
-
-    # PARTIAL SEARCH MATCH
-    # EXAMPLE:
-    # "TITAN" CAN FIND "TITANIC"
-    if title.lower() in current.title.lower():
-
-        print("\nMovie Found!")
-        print_movie(current)
+    # CHECK IF PLAYLIST IS EMPTY
+    if self.head is None:
+        print("Playlist is empty.")
         return
 
-    current = current.next
+    current = self.head
+    found = False
 
-    # STOP IF BACK TO HEAD
-    if current == self.head:
-        break
+    while True:
 
-print("Movie not found!")
-```
+        # PARTIAL SEARCH MATCH
+        # EXAMPLE: "TITAN" CAN FIND "TITANIC"
+        if title.lower() in current.title.lower():
+
+            if found == False:
+                print("\nMovie Found!")
+
+            print_movie(current)
+            found = True
+
+        current = current.next
+
+        # STOP IF BACK TO HEAD
+        if current == self.head:
+            break
+
+    if found == False:
+        print("Movie not found!")
+
 
 # SEARCH BY ACTOR FUNCTION
-
 def search_by_actor(self, actor):
 
-```
-# CHECK IF PLAYLIST IS EMPTY
-if self.head is None:
-    print("Playlist is empty.")
-    return
+    # CHECK IF PLAYLIST IS EMPTY
+    if self.head is None:
+        print("Playlist is empty.")
+        return
 
-current = self.head
-found = False
+    current = self.head
+    found = False
 
-while True:
+    while True:
 
-    # PARTIAL SEARCH MATCH
-    # EXAMPLE:
-    # "VICE" CAN FIND "VICE GANDA"
-    if actor.lower() in current.actor.lower():
+        # PARTIAL SEARCH MATCH
+        # EXAMPLE: "VICE" CAN FIND "VICE GANDA"
+        if actor.lower() in current.actor.lower():
 
-        if found == False:
-            print("\nMovies Found:")
+            if found == False:
+                print("\nMovies Found:")
 
-        print_movie(current)
+            print_movie(current)
+            found = True
 
-        found = True
+        current = current.next
 
-    current = current.next
+        # STOP IF BACK TO HEAD
+        if current == self.head:
+            break
 
-    # STOP IF BACK TO HEAD
-    if current == self.head:
-        break
-
-if found == False:
-    print("No movies found!")
-```
+    if found == False:
+        print("No movies found!")
