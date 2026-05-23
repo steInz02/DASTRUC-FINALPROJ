@@ -29,16 +29,25 @@ class MoviePlaylist:
         self.tail = None
         self.current = None
 
-    # CHECK IF PLAYLIST IS EMPTY
-    def is_empty(self):
+    def is_duplicate(self, title):
 
         if self.head is None:
-            return True
-        else:
             return False
-            
 
-    # COUNT ALL MOVIES
+        temp = self.head
+
+        while True:
+
+            if temp.title.lower() == title.lower():
+                return True
+
+            temp = temp.next
+
+            if temp == self.head:
+                break
+
+        return False
+
     def count_movies(self):
 
         if self.head is None:
