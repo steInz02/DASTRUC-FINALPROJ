@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Playlist System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <!-- PUTYOURLOGOHERE -->
+        <div class="logo">MOVIELIST</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#add">Add</a>
+            <a href="#search">Search</a>
+            <a href="#manage">Manage</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="tag">Circular Doubly Linked List System</p>
+            <h1>Movie Playlist System</h1>
+            <p>
+                Add, search, update, delete, and navigate movies using a playlist-style system.
+            </p>
+
+            <div class="hero-buttons">
+                <button onclick="displayAll()">Display All Movies</button>
+
+                <a id="trailerButton" class="trailer-btn" href="#" target="_blank">
+                    Play Movie Trailer
+                </a>
+
+                <button class="dark-btn" onclick="showCurrent()">Current Movie</button>
+            </div>
+        </div>
+    </section>
+
+    <main>
+
+        <section class="dashboard">
+            <div class="stat-card">
+                <h3>Total Movies</h3>
+                <p id="totalMovies">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Current Movie</h3>
+                <p id="currentMovieText">None</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Status</h3>
+                <p id="statusText">System ready</p>
+            </div>
+        </section>
+
+        <section class="section" id="movies">
+            <div class="section-header">
+                <h2>Movie Dashboard</h2>
+
+                <div class="action-row">
+                    <button onclick="displayAll()">Display All Movies</button>
+                    <button onclick="displayReverse()">Display Reverse</button>
+                    <button onclick="nextMovie()">Next Movie</button>
+                    <button onclick="previousMovie()">Previous Movie</button>
+                </div>
+            </div>
+
+            <div id="movieOutput" class="movie-grid"></div>
+        </section>
+
+        <section class="section" id="add">
+            <h2>Add Movie</h2>
+
+            <div class="form-grid">
+                <input type="text" id="movieId" placeholder="Movie ID: M06">
+                <input type="text" id="title" placeholder="Title: Avengers">
+                <input type="text" id="actor" placeholder="Actor: Robert Downey Jr.">
+                <input type="number" id="screenTime" placeholder="Screen Time in minutes">
+                <input type="number" id="rating" placeholder="Rating 1.0 - 10.0">
+                <input type="text" id="director" placeholder="Director">
+                <input type="text" id="genre" placeholder="Genre">
+                <input type="number" id="releaseYear" placeholder="Release Year">
+                <input type="number" id="position" placeholder="Position for Add at Position">
+            </div>
+
+            <div class="action-row">
+                <button onclick="addBeginning()">Add at Beginning</button>
+                <button onclick="addEnd()">Add at End</button>
+                <button onclick="addPosition()">Add at Position</button>
+            </div>
+        </section>
+
+        <section class="section" id="search">
+            <h2>Search Movies</h2>
+
+            <div class="form-grid two">
+                <input type="text" id="searchTitle" placeholder="Search by title, example: Titan">
+                <button onclick="searchByTitle()">Search by Title</button>
+
+                <input type="text" id="searchActor" placeholder="Search by actor, example: Vice">
+                <button onclick="searchByActor()">Search by Actor</button>
+            </div>
+        </section>
+
+        <section class="section" id="manage">
+            <h2>Manage Movies</h2>
+
+            <div class="form-grid two">
+                <input type="text" id="deleteTitle" placeholder="Enter exact movie title to delete">
+                <button class="danger-btn" onclick="deleteMovie()">Delete Movie</button>
+
+                <input type="text" id="updateTitle" placeholder="Enter exact movie title to update">
+                <button onclick="openUpdateBox()">Update Movie</button>
+            </div>
+
+            <div id="updateBox" class="update-box hidden">
+                <h3>Update Movie Details</h3>
+
+                <div class="form-grid">
+                    <input type="text" id="updateMovieId" placeholder="New Movie ID">
+                    <input type="text" id="updateNewTitle" placeholder="New Title">
+                    <input type="text" id="updateActor" placeholder="New Actor">
+                    <input type="number" id="updateScreenTime" placeholder="New Screen Time">
+                    <input type="number" id="updateRating" placeholder="New Rating 1.0 - 10.0">
+                    <input type="text" id="updateDirector" placeholder="New Director">
+                    <input type="text" id="updateGenre" placeholder="New Genre">
+                    <input type="number" id="updateReleaseYear" placeholder="New Release Year">
+                </div>
+
+                <button onclick="saveUpdate()">Save Update</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Movie Playlist System</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
