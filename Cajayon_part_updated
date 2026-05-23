@@ -1,0 +1,106 @@
+# ADD MOVIE AT BEGINNING
+def add_beginning(self, new_movie):
+
+    if self.is_duplicate(new_movie.title):
+        print("Movie title already exists.")
+        return
+
+    # EMPTY LIST
+    if self.head is None:
+
+        self.head = new_movie
+        self.tail = new_movie
+
+        new_movie.next = new_movie
+        new_movie.prev = new_movie
+
+        self.current = self.head
+
+    else:
+
+        temp = self.tail
+
+        new_movie.next = self.head
+        new_movie.prev = temp
+
+        temp.next = new_movie
+        self.head.prev = new_movie
+
+        self.head = new_movie
+
+    print("Movie added successfully.")
+
+# ADD MOVIE AT END
+def add_end(self, new_movie):
+
+    if self.is_duplicate(new_movie.title):
+        print("Movie title already exists.")
+        return
+
+    # EMPTY LIST
+    if self.head is None:
+
+        self.head = new_movie
+        self.tail = new_movie
+
+        new_movie.next = new_movie
+        new_movie.prev = new_movie
+
+        self.current = self.head
+
+    else:
+
+        temp = self.tail
+
+        temp.next = new_movie
+
+        new_movie.prev = temp
+        new_movie.next = self.head
+
+        self.head.prev = new_movie
+
+        self.tail = new_movie
+
+    print("Movie added successfully.")
+
+# ADD MOVIE AT POSITION
+def add_position(self, new_movie, position):
+
+    if position < 1:
+        print("Invalid position.")
+        return
+
+    if self.is_duplicate(new_movie.title):
+        print("Movie title already exists.")
+        return
+
+    total = self.count_movies()
+
+    if position > total + 1:
+        print("Position out of range.")
+        return
+
+    # BEGINNING
+    if position == 1:
+        self.add_beginning(new_movie)
+        return
+
+    # END
+    if position == total + 1:
+        self.add_end(new_movie)
+        return
+
+    temp = self.head
+    count = 1
+
+    while count < position - 1:
+        temp = temp.next
+        count += 1
+
+    new_movie.next = temp.next
+    new_movie.prev = temp
+
+    temp.next.prev = new_movie
+    temp.next = new_movie
+
+    print("Movie added successfully.")
