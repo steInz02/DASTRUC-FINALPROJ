@@ -24,7 +24,8 @@ def create_movie_input():
     genre = input("Genre: ")
     release_year = input("Release Year: ")
 
-    new_movie = MovieNode(movie_id, title, actor, screen_time, rating, director, genre, release_year)
+    new_movie = MovieNode(movie_id, title, actor, screen_time,
+                          rating, director, genre, release_year)
 
     return new_movie
 
@@ -36,8 +37,8 @@ def show_menu():
     print("1. Add Movie at Beginning")
     print("2. Add Movie at End")
     print("3. Add Movie at Position")
-    print("4. Display Forward")
-    print("5. Display Reverse")
+    print("4. Display All Movies")
+    print("5. Display Movies in Reverse")
     print("6. Current Movie")
     print("7. Next Movie")
     print("8. Previous Movie")
@@ -45,7 +46,8 @@ def show_menu():
     print("10. Search by Actor")
     print("11. Delete Movie")
     print("12. Update Movie")
-    print("13. Exit")
+    print("13. View Total Movies")
+    print("14. Exit")
 
 
 # MAIN PROGRAM
@@ -116,11 +118,14 @@ def main():
             update_movie(playlist, title)
 
         elif choice == 13:
+            print("Total Movies:", playlist.count_movies())
+
+        elif choice == 14:
             print("Program ended.")
             break
 
         else:
-            print("Invalid choice. Please choose from 1 to 13 only.")
+            print("Invalid choice. Please choose from 1 to 14 only.")
 
 
 # START THE PROGRAM
