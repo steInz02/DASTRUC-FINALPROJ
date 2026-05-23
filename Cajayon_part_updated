@@ -101,22 +101,9 @@ def add_position(self, new_movie, position):
         print("Movie title already exists.")
         return
 
-    # COUNT TOTAL MOVIES
-    total = self.count_movies()
-
-    # POSITION OUT OF RANGE
-    if position > total + 1:
-        print("Position out of range.")
-        return
-
     # INSERT AT BEGINNING
     if position == 1:
         self.add_beginning(new_movie)
-        return
-
-    # INSERT AT END
-    if position == total + 1:
-        self.add_end(new_movie)
         return
 
     # START FROM HEAD
@@ -124,9 +111,19 @@ def add_position(self, new_movie, position):
     count = 1
 
     # MOVE TO NODE BEFORE POSITION
-    while count < position - 1:
+    while count < position - 1 and temp.next != self.head:
         temp = temp.next
         count += 1
+
+    # POSITION OUT OF RANGE
+    if count != position - 1:
+        print("Position out of range.")
+        return
+
+    # INSERT AT END
+    if temp.next == self.head:
+        self.add_end(new_movie)
+        return
 
     # CONNECT NEW NODE
     new_movie.next = temp.next
@@ -139,6 +136,4 @@ def add_position(self, new_movie, position):
     temp.next = new_movie
 
     # SUCCESS MESSAGE
-    print("Movie added successfully.")
-
     print("Movie added successfully.")
