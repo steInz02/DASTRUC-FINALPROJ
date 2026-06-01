@@ -14,25 +14,25 @@ def search_by_title(self, title):
         print("Playlist is empty.")
         return
 
-    current = self.head
+    temp = self.head
     found = False
 
     while True:
 
         # PARTIAL SEARCH MATCH
         # EXAMPLE: "TITAN" CAN FIND "TITANIC"
-        if title.lower() in current.title.lower():
+        if title.lower() in temp.title.lower():
 
             if found == False:
                 print("\nMovie Found!")
 
-            print_movie(current)
+            print_movie(temp)
             found = True
 
-        current = current.next
+        temp = temp.next
 
         # STOP IF BACK TO HEAD
-        if current == self.head:
+        if temp == self.head:
             break
 
     if found == False:
@@ -47,25 +47,25 @@ def search_by_actor(self, actor):
         print("Playlist is empty.")
         return
 
-    current = self.head
+    temp = self.head
     found = False
 
     while True:
 
         # PARTIAL SEARCH MATCH
         # EXAMPLE: "VICE" CAN FIND "VICE GANDA"
-        if actor.lower() in current.actor.lower():
+        if actor.lower() in temp.actor.lower():
 
             if found == False:
                 print("\nMovies Found:")
 
-            print_movie(current)
+            print_movie(temp)
             found = True
 
-        current = current.next
+        temp = temp.next
 
         # STOP IF BACK TO HEAD
-        if current == self.head:
+        if temp == self.head:
             break
 
     if found == False:
