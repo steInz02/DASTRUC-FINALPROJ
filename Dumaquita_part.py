@@ -111,11 +111,9 @@ def main():
 
         elif choice == 11:
             title = input("Enter title to delete: ")
-            delete_movie(playlist, title)
 
         elif choice == 12:
             title = input("Enter title to update: ")
-            update_movie(playlist, title)
 
         elif choice == 13:
             print("Total Movies:", playlist.count_movies())
